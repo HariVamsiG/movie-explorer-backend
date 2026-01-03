@@ -18,6 +18,15 @@ class MovieFilter(django_filters.FilterSet):
     genre_id = django_filters.NumberFilter(field_name='genres__id')
     rating_gte = django_filters.NumberFilter(field_name='rating', lookup_expr='gte')
     rating_lte = django_filters.NumberFilter(field_name='rating', lookup_expr='lte')
+    
+    ordering = django_filters.OrderingFilter(
+        fields=(
+            ('title', 'title'),
+            ('release_year', 'release_year'),
+            ('rating', 'rating'),
+            ('created_at', 'created_at'),
+        )
+    )
 
     class Meta:
         model = Movie
